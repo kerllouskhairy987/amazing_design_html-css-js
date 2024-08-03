@@ -1,0 +1,855 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --default-color: #000;
+    /* For Text Default Color */
+    --primary-color: #FF764D;
+    /* For Text */
+    --body-colr: #F3F3F3;
+    /* For Body At Light Mode */
+    --container-color: #FFF;
+    /* For Container At Light Mode */
+}
+
+.dark_mode {
+    --default-color: #FFF;
+    /* For Text */
+    --body-colr: #000;
+    /* For Body At dark Mode */
+    --container-color: #232323;
+    /* For Container At Dark Mode */
+}
+
+
+body {
+    background-color: var(--body-colr);
+    color: var(--default-color);
+    font-family: futura-pt, Avenir, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+/* -------------- Start Loading Effect ------------- */
+body header,
+body .sub-nav,
+body section,
+body main,
+body footer {
+    scale: 0;
+    transition: scale 1.5s ease;
+}
+body.body-loading header,
+body.body-loading .sub-nav,
+body.body-loading section,
+body.body-loading main,
+body.body-loading footer  {
+    scale: 1;
+}
+/* -------------- End Loading Effect ------------- */
+body.dark_mode {
+    background-color: var(--body-colr);
+    color: var(--default-color);
+}
+
+.container {
+    max-width: 1700px;
+    width: 100%;
+    background-color: var(--container-color);
+    margin: auto;
+}
+
+ul li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--default-color);
+    font-weight: 600;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.active-primary-color {
+    color: var(--primary-color);
+}
+
+span[title="menu"]:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: 600;
+    display: block;
+    user-select: none;
+}
+
+/* End Global */
+/* ------------ Start To Top Button ------- */
+#toTop {
+    position: fixed;
+    right: 30px;
+    background-color: var(--primary-color);
+    color: var(--default-color);
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    z-index: 150;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+    animation-name: topBottom;
+    animation-timing-function: linear;
+    animation-duration: 1s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    transform: scale(0);
+    transition: 0.5s linear;
+}
+
+@keyframes topBottom {
+    0% {
+        bottom: 30px;
+    }
+
+    100% {
+        bottom: 40px;
+    }
+}
+
+/* ------------ End To Top Button ------- */
+/* -------------- Start Loading ------------- */
+.div-loading {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    background-color: #0000008b;
+    animation-name: hideDivLoading;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;                       /* To Save The Last Properties */
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+}
+@keyframes hideDivLoading {
+    from{
+        display: flex;
+    }
+    to {
+        display: none;
+    }
+}
+.loader {
+    transform: rotateZ(45deg);
+    perspective: 1000px;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    color: #fff;
+}
+
+.loader:before,
+.loader:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    transform: rotateX(70deg);
+    animation: 0.7s spin linear 3;
+}
+
+.loader:after {
+    color: #FF3D00;
+    transform: rotateY(70deg);
+    animation-delay: .2s;
+}
+
+@keyframes rotate {
+    0% {
+        transform: translate(-50%, -50%) rotateZ(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotateZ(360deg);
+    }
+}
+
+@keyframes rotateccw {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(-360deg);
+    }
+}
+
+@keyframes spin {
+
+    0%,
+    100% {
+        box-shadow: .2em 0px 0 0px currentcolor;
+    }
+
+    12% {
+        box-shadow: .2em .2em 0 0 currentcolor;
+    }
+
+    25% {
+        box-shadow: 0 .2em 0 0px currentcolor;
+    }
+
+    37% {
+        box-shadow: -.2em .2em 0 0 currentcolor;
+    }
+
+    50% {
+        box-shadow: -.2em 0 0 0 currentcolor;
+    }
+
+    62% {
+        box-shadow: -.2em -.2em 0 0 currentcolor;
+    }
+
+    75% {
+        box-shadow: 0px -.2em 0 0 currentcolor;
+    }
+
+    87% {
+        box-shadow: .2em -.2em 0 0 currentcolor;
+    }
+}
+
+
+/* -------------- End Loading ------------- */
+/* -------- Start Header Styling ------- */
+header .container h1 a {
+    display: flex;
+    align-items: center;
+}
+
+header .container {
+    padding: 10px 20px;
+    text-transform: capitalize;
+    box-shadow: 0px 0px 10px 1px var(--body-colr);
+}
+
+header .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .top .right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+header .top .left,
+header .top .left .try-log {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+header .top .right nav ul {
+    display: flex;
+    gap: 15px;
+}
+
+header .top div a[title="try for free"],
+header .menu-div div a[title="try for free"] {
+    color: blue;
+    font-size: 19px;
+}
+
+header .top div a[title="login page"],
+header .menu-div div a[title="login page"] {
+    font-size: small;
+}
+
+header .top .mode {
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
+    min-width: 30px;
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+header .top .mode span {
+    color: var(--default-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+header .menu-div {
+    max-height: 0px;
+    overflow: hidden;
+    transition: all 1s linear;
+}
+
+
+header .menu-div.active {
+    max-height: 500px;
+    height: auto;
+    overflow: auto;
+}
+
+header .menu-div div h3 {
+    margin: 30px 0px 20px 0px;
+}
+
+header .menu-div ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+header .menu-div ul li {
+    font-size: 14px;
+}
+
+header .menu-div .second ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+header .menu-div ul li a {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+header .menu-div ul li a p {
+    font-weight: 400;
+    margin-top: 15px;
+    padding-bottom: 15px;
+}
+
+header .menu-div .try-log,
+header .container .menu-div .first {
+    display: none;
+}
+
+.container.sub-nav ul {
+    display: flex;
+    gap: 20px;
+}
+
+.container.sub-nav {
+    position: sticky;
+    top: 0px;
+    padding: 10px 20px;
+    z-index: 100;
+}
+
+.container.sub-nav.hide-sun-nav {
+    top: -100%;
+}
+
+/* -------- End Header Styling ------- */
+/* -------- Start Main Styling ------- */
+main .container {
+    padding-top: 30px;
+}
+
+main .container .parent {
+    margin: 0px 20px;
+    height: calc(100vh - 100px);
+    background: url("https://ableton-production.imgix.net/uploads/homepage-teasers/Homepage_Takeover_Live_12.1_2500x1700px.jpg?auto=format&amp;dpr=0.90&amp;fit=crop&amp;fm=jpg&amp;h=396&amp;ixjsv=1.1.3&amp;w=594&quot");
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    /* filter: blur(2px); */
+    position: relative;
+    z-index: 1;
+}
+
+main .container .parent h2 {
+    background-color: #00000029;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color: var(--primary-color);
+    font-size: 5rem;
+    z-index: 10;
+}
+
+/* -------- End Main Styling ------- */
+/* -------- Start First Section Styling ------- */
+section .container .text,
+section .container .video {
+    margin: auto;
+    max-width: 900px;
+    width: 100%;
+    padding: 90px 20px;
+    line-height: 40px;
+    font-size: 20px;
+}
+
+section .container .video iframe {
+    width: 100%;
+}
+section .container .text p {
+    margin-top: 35px;
+}
+
+section .container .text a {
+    color: blue;
+    font-weight: 600;
+}
+
+/* -------- End First Section Styling ------- */
+/* -------- Start Second Section Styling (Images) [Include One Image Section]------- */
+section#oneImg .container {
+    padding: 0px 20px;
+}
+
+section#imgs .container {
+    position: relative;
+}
+
+section#imgs .container::after {
+    position: absolute;
+    content: "";
+    width: 55%;
+    height: 100%;
+    background-color: #FBFFA7;
+    top: 0;
+    right: 0;
+}
+
+section#imgs .container .imgs,
+section#oneImg .container .one-img {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+}
+
+section#imgs .container .imgs div {
+    padding: 40px 20px;
+    width: 50%;
+    min-height: 100%;
+    position: relative;
+}
+
+section#imgs .container .imgs div:first-child img {
+    object-fit: cover;
+    width: 120%;
+    z-index: 12;
+    position: relative;
+}
+
+section#imgs .container .imgs div:last-child {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+section#imgs .container .imgs div:last-child img {
+    width: 65%;
+    z-index: 12;
+}
+
+section .container .video {
+    padding: 0px 20px;
+}
+
+section .container .video video {
+    width: 100%;
+}
+
+/* -------- End Second Section Styling (Images) [Include One Image Section] ------- */
+/* -------- Start Second Section Styling (Images) && [ Include Image With Text Next To It Section ]------- */
+section.img-text .container,
+section#imgs_second .container {
+    padding: 0px 20px;
+    position: relative;
+}
+
+section.img-text .container {
+    padding-bottom: 50px;
+}
+
+section#imgs_second.imgs-second-- .container::after,
+section#imgs_second .container::after {
+    position: absolute;
+    content: "";
+    width: 55%;
+    height: 100%;
+    background-color: #B6FFC0;
+    top: 0;
+    left: 0;
+}
+
+section#imgs_second.imgs-second-- .container {
+    padding: 50px 0px;
+}
+
+section#imgs_second.imgs-second-- .container::after {
+    left: calc(45% / 2);
+}
+
+section.img-text .container .imgs,
+section#imgs_second .container .imgs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    padding: 50px 0px;
+}
+
+section.img-text .container .imgs {
+    background-color: #B1C5FF;
+    padding: 0px;
+}
+
+section.img-text .container .imgs h4 {
+    margin: 10px 0px;
+    color: #000;
+}
+
+section.img-text .container .imgs a {
+    color: blue;
+}
+
+section.img-text .container .imgs div:first-child,
+section#imgs_second .container .imgs div:first-child {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+section.img-text .container .imgs div:first-child {
+    width: 50% !important;
+}
+
+section#imgs_second .container .imgs div:first-child img {
+    width: 80%;
+    position: relative;
+    z-index: 12;
+}
+
+section.img-text .container .imgs div:first-child img {
+    width: 100%;
+}
+
+section#imgs_second .container .imgs div:last-child {
+    width: 55%;
+}
+
+section.img-text .container .imgs div:last-child {
+    width: 50%;
+    padding: 0px 10%;
+}
+
+section#imgs_second .container .imgs div:last-child img {
+    width: 100%;
+    position: relative;
+    z-index: 12;
+}
+
+section.imgs-second-- div:last-child {
+    width: 100%;
+}
+
+section.imgs-second-- div:last-child img {
+    width: 100%;
+    position: relative;
+    z-index: 12;
+}
+
+/* -------- End Second Section Styling (Images) && [ Include Image With Text Next To It Section ]------- */
+
+/* --------- Start Empty Div --------- */
+section .container div:empty {
+    background-color: var(--default-color);
+    height: 3px;
+    box-shadow: 0px 0px 3px var(--primary-color) inset;
+}
+
+/* --------- End Empty Div --------- */
+
+/* --------- Start Footer Section -------- */
+footer .container {
+    padding: 40px 20px;
+}
+
+footer .container a {
+    display: block;
+    margin: 15px 0px;
+    width: fit-content;
+}
+
+footer .container .parent {
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+}
+
+footer .container .parent h1 {
+    font-weight: bold;
+    font-size: 40px;
+    margin: 40px 0px;
+}
+
+footer .container .parent .child-footer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+footer .container .parent .child-footer div:first-child div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+footer .container .parent .child-footer div:first-child div img {
+    width: 30px;
+}
+
+footer .container .parent .child-footer .sign-up-footer label {
+    position: relative;
+    display: flex;
+    margin-top: 20px;
+}
+
+footer .container .parent .child-footer .sign-up-footer label input[type="text"] {
+    border: none;
+    background-color: rgba(128, 128, 128, 0.367);
+    padding: 10px 100px 10px 10px;
+    flex-grow: 3;
+    outline: none;
+    max-width: 100%;
+}
+
+footer .container .parent .child-footer .sign-up-footer label button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    border: none;
+    width: 80px;
+    background-color: blue;
+    color: #FFF;
+    cursor: pointer;
+}
+
+footer .container .parent .child-footer>div:last-child {
+    grid-column: span 2;
+}
+
+footer .container .parent .child-footer>div:last-child div {
+    margin: 20px 0px;
+}
+
+footer .container .parent .child-footer>div:last-child select:first-child {
+    padding: 10px 20px;
+    outline: none;
+    border: none;
+    background-color: rgba(128, 128, 128, 0.367);
+}
+
+footer .container .parent .child-footer>div:last-child select:last-child {
+    padding: 10px 50px;
+    outline: none;
+    border: none;
+    background-color: rgba(128, 128, 128, 0.367);
+}
+
+footer .container .parent .second-child-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+footer .container .parent .second-child-footer div:first-child {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+footer .container .parent .second-child-footer div:first-child a {
+    font-size: 12px;
+}
+
+footer .container .parent .second-child-footer div:last-child {
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+}
+
+/* --------- End Footer Section -------- */
+
+
+/* Media Query Start 800 px */
+@media(max-width: 800px) {
+
+    /* ------------ Start Header Query --------- */
+    header .container nav ul li:not(:last-child) {
+        display: none;
+    }
+
+    header .menu-div .try-log,
+    header .container .menu-div .first {
+        display: block;
+    }
+
+    header .container .menu-div .first ul {
+        display: block;
+    }
+
+    header .container .menu-div .first ul li {
+        line-height: 40px;
+    }
+
+    header .top .left .try-log {
+        display: none;
+    }
+
+    header .menu-div .try-log {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    header .menu-div .try-log a {
+        width: fit-content;
+    }
+
+    /* ------------ End Header Query --------- */
+    /* ------------ End Header Query --------- */
+    /* -------- Start Second Section Styling (Images) Query------- */
+    section#imgs .container .imgs div:last-child img {
+        width: 80%;
+    }
+
+    /* -------- End Second Section Styling (Images) Query------- */
+
+    /* -------- Start Second Section Styling (Images) && [ Include Image With Text Next To It Section ]------- */
+    section.img-text .container .imgs {
+        flex-wrap: wrap;
+    }
+
+    section.img-text .container .imgs div:first-child,
+    section.img-text .container .imgs div:last-child {
+        width: 100% !important;
+    }
+
+    section.img-text .container .imgs div:first-child img {
+        width: 100%;
+    }
+
+    section.img-text .container .imgs div:last-child {
+        margin: 30px 0px;
+    }
+
+    /* -------- End Second Section Styling (Images) && [ Include Image With Text Next To It Section ]------- */
+    /* --------- Start Footer Section Query -------- */
+    footer .container .parent .child-footer {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    }
+
+    footer .container .parent .child-footer>div:last-child {
+        grid-column: span 1;
+    }
+
+    footer .container .parent .child-footer>div:last-child select:first-child {
+        margin-bottom: 20px;
+    }
+
+    footer .container .parent .second-child-footer {
+        display: block;
+    }
+
+    footer .container .parent .second-child-footer div:first-child {
+        display: block;
+    }
+
+    footer .container .parent .child-footer .sign-up-footer {
+        order: -1;
+    }
+
+    /* --------- End Footer Section Query -------- */
+}
+
+/*             500px                           500px                     500px                        500px          Media */
+/* Media Query Start 500 px */
+@media (max-width: 500px) {
+
+    /* ---------- Start Mian Query ---------- */
+    main .container .parent h2 {
+        font-size: 2rem;
+    }
+
+    /* ---------- End Mian Query ---------- */
+    /* ---------- Start One Image Section Query ---------- */
+    section#oneImg .container .one-img img {
+        width: 100%;
+    }
+
+    /* ---------- End One Image Section Query ---------- */
+}
+
+/* Media Query End 800 px */
+
+/* ----------- Scroll Bar ----------- */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 118, 77, 0.7);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-color);
+}
+
+::-webkit-scrollbar-track {
+    background-color: #43434351;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 118, 77, 0.7);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-color);
+}
+
+::-webkit-scrollbar-track {
+    background-color: #43434351;
+}
